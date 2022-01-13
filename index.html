@@ -1,0 +1,87 @@
+<html>
+<head>
+  <title>CASE STUDY: GOOGLE LENS VS MOBILENET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h3 class="btn-primary heading">CASE STUDY: GOOGLE LENS VS MOBILENET 
+                <img src = "data:image/png;base64,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">
+            </h3>
+            <br><br>
+            <hr>
+            <ol>
+                <div class = "col-xs-12 main_div">
+                    <li class = "col-sm-4 col-xs-12">
+                        <b>Test Image</b>
+                        <img src = "Analogue Watch.jpg" class = "img-responsive">
+                    </li>
+                    <h4 class = "col-sm-4 col-xs-12">Output On Google Lens: Exotica Classic Analogue Watch<span></span></h4>
+                    <h4 class = "col-sm-4 col-xs-12">Output On MobileNet Model: ATM Cash Dispenser<span></span></h4>
+                    <br>
+                    <div>
+                        <h4 class = "output1">Result- Google Lens is Correct!</h4>
+                    </div>
+
+                </div>
+                <br><br>
+
+                <div class = "col-xs-12 main_div">
+                    <li class = "col-sm-4 col-xs-12">
+                        <b>Test Image</b>
+                        <img src = "Scissors.jpg" class = "img-responsive">
+                    </li>
+                    <h4 class = "col-sm-4 col-xs-12">Output On Google Lens: Kitchen Scissors<span></span></h4>
+                    <h4 class = "col-sm-4 col-xs-12">Output On MobileNet Model: Television Sstem<span></span></h4>
+                    <br>
+                    <div>
+                        <h4 class = "output2">Result- Google Lens is Correct!</h4>
+                    </div>
+
+                </div>
+                <br><br>
+
+                <div class = "col-xs-12 main_div">
+                    <li class = "col-sm-4 col-xs-12">
+                        <b>Test Image</b>
+                        <img src = "Water bottle.jpg" class = "img-responsive">
+                    </li>
+                    <h4 class = "col-sm-4 col-xs-12">Output On Google Lens: Tupperware Water Botle<span></span></h4>
+                    <h4 class = "col-sm-4 col-xs-12">Output On MobileNet Model: Microwave Oven<span></span></h4>
+
+                    <div>
+                        <h4 class = "output3">Result- Google Lens is Correct!</h4>
+                    </div>
+
+                </div>
+                <br><br>
+
+                <div class = "col-xs-12 main_div">
+                    <li class = "col-sm-4 col-xs-12">
+                        <b>Test Image</b>
+                        <img src = "Highlighters.jpg" class = "img-responsive">
+                    </li>
+                    <h4 class = "col-sm-4 col-xs-12">Output On Google Lens: Sharpie Tank, Highlighters<h4></h4></h4>
+                    <h4 class = "col-sm-4 col-xs-12">Output On MobileNet Model: Pill Bottle<h4></h4></h4>
+
+                    <div>
+                        <h4 class = "output4">Result- Google Lens is Correct!</h4>
+                    </div>
+
+                </div>
+                <br><br>
+            </ol>
+        </center>           
+    </div>    
+    <div class= "copy_right_footer">Developed by Rituparna Das</div> 
+</body>
+</html>
